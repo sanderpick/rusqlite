@@ -157,8 +157,8 @@ pub unsafe extern "C" fn wasm_vfs_dlclose(_arg1: *mut sqlite3_vfs, _arg2: *mut c
 
 #[no_mangle]
 pub unsafe extern "C" fn wasm_vfs_sleep(_arg1: *mut sqlite3_vfs, microseconds: c_int) -> c_int {
-    let target_date = js_sys::Date::now() + (microseconds as f64 / 1000.0);
-    while js_sys::Date::now() < target_date {}
+    let target_date = 0.0 + (microseconds as f64 / 1000.0);
+    while 0.0 < target_date {}
     SQLITE_OK
 }
 
@@ -176,6 +176,6 @@ pub unsafe extern "C" fn wasm_vfs_randomness(
 #[no_mangle]
 pub unsafe extern "C" fn wasm_vfs_currenttime(_arg1: *mut sqlite3_vfs, pTime: *mut f64) -> c_int {
     // https://en.wikipedia.org/wiki/Julian_day
-    *pTime = (js_sys::Date::now() / 86400000.0) + 2440587.5;
+    *pTime = (0.0 / 86400000.0) + 2440587.5;
     SQLITE_OK
 }
